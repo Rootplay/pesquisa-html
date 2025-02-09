@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa na Página</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        input { padding: 8px; width: 300px; margin-bottom: 10px; }
+        .highlight { background-color: yellow; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>Pesquisa na Página</h2>
+    <input type="text" id="searchBox" placeholder="Digite para pesquisar..." oninput="searchText()">
+
+    <p>O PlayStation 2 foi um dos consoles mais vendidos da história, lançado pela Sony. Ele possui uma vasta biblioteca de jogos e foi muito popular em todo o mundo.</p>
+    <p>Jogos icônicos como GTA San Andreas, God of War e Resident Evil 4 marcaram a geração do PS2.</p>
+
+    <script>
+        function searchText() {
+            let searchQuery = document.getElementById('searchBox').value.toLowerCase();
+            let paragraphs = document.querySelectorAll("p");
+
+            paragraphs.forEach(p => {
+                let text = p.innerHTML;
+                let regex = new RegExp(searchQuery, 'gi');
+                let highlightedText = text.replace(regex, match => `<span class="highlight">${match}</span>`);
+                p.innerHTML = highlightedText;
+            });
+        }
+    </script>
+
+</body>
+</html>
